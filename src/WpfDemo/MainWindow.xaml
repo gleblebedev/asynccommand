@@ -1,0 +1,17 @@
+﻿<Window x:Class="WpfDemo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:WpfAsyncCommand="clr-namespace:WpfAsyncCommand;assembly=WpfAsyncCommand"
+        xmlns:WpfDemo="clr-namespace:WpfDemo"
+        Title="MainWindow" Height="350" Width="525">
+	<Window.Resources>
+		<WpfDemo:DemoCommand x:Key="command"/>
+	</Window.Resources>
+    <Grid>
+		<StackPanel>
+			<WpfAsyncCommand:AsyncCommandView AsyncCommand="{StaticResource command}" CommandArgument="{Binding Query}"/>
+			<TextBox Text="{Binding Query, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+			<Button Click="OnRun"><TextBlock>Run</TextBlock></Button>
+		</StackPanel>
+    </Grid>
+</Window>
